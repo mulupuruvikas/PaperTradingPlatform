@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\sitefrontend",
+    "\\sitefrontend\\src",
+    "\\sitefrontend\\src\\assets",
+    "\\sitefrontend\\src\\components",
+    "\\sitefrontend\\src\\components\\Chart",
+    "\\sitefrontend\\src\\components\\Sidebar",
+    "\\sitefrontend\\src\\components\\Trade"
   ],
-  "SelectedNode": "\\C:\\Users\\vikas\\Source\\Repos\\PaperTradingPlatform",
+  "SelectedNode": "\\sitefrontend\\src\\components\\Chart\\index.js",
   "PreviewInSolutionExplorer": false
 }

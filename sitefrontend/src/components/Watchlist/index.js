@@ -1,0 +1,4 @@
+const Watchlist = () => {
+    return (
+    )
+}
