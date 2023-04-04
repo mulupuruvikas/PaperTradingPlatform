@@ -1,7 +1,74 @@
 .home-page {
     background: #000;
-    .top-tags {
-        bottom: auto;
-        top: 15px;
+    padding-left: 0px;
+    margin: 0px;
+    top: auto;
+}
+.account-summary {
+    font-family: sans-serif;
+    color: #fff;
+    width: 400px;
+    height: 45%;
+    top: 10%;
+    padding-left: 100px;
+    position: absolute;
+    border-color: darkslategrey;
+    border-right-style: solid;
+    border-right-width: 15px;
+    border-bottom-style: solid;
+    border-bottom-width: 15px;
+
+    h1 {
+        color: white;
+        width: 100%;
+        padding: 0px;
     }
+
+    p1 {
+        line-height: 2.5em;
+        color: darkslategrey;
+    }
+
+    p2 {
+        margin-left: 100px;
+        line-height: 2.5em;
+        text-align: right;
+    }
+}
+
+.watchlist {
+    font-family: sans-serif;
+    color: #fff;
+    width: 400px;
+    height: 100vh;
+    top: 55%;
+    padding-left: 100px;
+    position: absolute;
+    border-color: darkslategrey;
+    border-right-style: solid;
+    border-right-width: 15px;
+
+    h1 {
+        margin-top: 10%;
+        color: white;
+        width: 100%;
+        padding: 0px;
+    }
+}
+.positions {
+    font-family: sans-serif;
+    color: #fff;
+    width: 52%;
+    height: 100vh;
+    left: 40%;
+    top: 10%;
+    padding-left: 75px;
+    position: absolute;
+
+    h1 {
+        color: white;
+        width: 100%;
+        padding: 0px;
+    }
+    
 }

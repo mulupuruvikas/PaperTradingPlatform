@@ -1,0 +1,18 @@
+.search-bar {
+    height: 200px;
+    width: 40%;
+    background: #1f1f1f;
+    position: absolute;
+    top: 0;
+    left: 50px;
+    z-index: 3;
+    min-height: 500px;
+
+    input {
+        fill: #000;
+        padding: 50%;
+        width: 20%;
+        height: 100px;
+        margin: 2em;
+    }
+}

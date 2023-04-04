@@ -3,12 +3,9 @@
     "",
     "\\sitefrontend",
     "\\sitefrontend\\src",
-    "\\sitefrontend\\src\\assets",
     "\\sitefrontend\\src\\components",
-    "\\sitefrontend\\src\\components\\Chart",
-    "\\sitefrontend\\src\\components\\Sidebar",
-    "\\sitefrontend\\src\\components\\Trade"
+    "\\sitefrontend\\src\\components\\Home",
+    "\\sitefrontend\\src\\components\\Sidebar"
   ],
-  "SelectedNode": "\\sitefrontend\\src\\components\\Chart\\index.js",
   "PreviewInSolutionExplorer": false
 }

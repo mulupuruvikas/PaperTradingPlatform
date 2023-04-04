@@ -1,6 +1,12 @@
 const Chart = () => {
     return (
-        <h1>chart stuff</h1>
+        <div className="container chart-page">
+            <div className="charts" >
+                <div class="css-typing">
+                    <h1>positions page</h1>
+                </div>
+            </div>
+        </div>
     )
 }
 
