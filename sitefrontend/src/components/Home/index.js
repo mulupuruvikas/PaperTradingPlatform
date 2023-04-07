@@ -13,16 +13,31 @@ const Home = () => {
                     &nbsp; &nbsp; &nbsp;
                     Account Summary
                 </h1>
-                <p1>
+                <p class="lefty">
                     Account Value: <br></br>
                     Option Buying Power: <br></br>
                     Stock Buying Power:<br></br>
-                </p1>
-                <p2>
+                </p>
+                <p class="righty">
                     $sample value <br></br>
-                    $sample options <br></br>
+                    $sample options <br></br> 
                     $sample stocks <br></br>
-                </p2>
+                </p>
+                <p class="cash">
+                    Cash:
+                </p>
+                <p class="cash-value">
+                    $samplecash
+                </p>
+                <p class="reset"> <b>
+                    Reset
+                </b></p>
+                <p class="profit-loss-day">
+                    P/L Day
+                </p>
+                <p class="profits">
+                    0%
+                </p>
             </div>
             <div className="watchlist">
                 <h1>

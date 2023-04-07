@@ -2,14 +2,15 @@
     background: #000;
     padding-left: 0px;
     margin: 0px;
-    top: auto;
+    top: 0px;
 }
 .account-summary {
+    text-align: left;
     font-family: sans-serif;
     color: #fff;
     width: 400px;
     height: 45%;
-    top: 10%;
+    top: 0%;
     padding-left: 100px;
     position: absolute;
     border-color: darkslategrey;
@@ -24,51 +25,107 @@
         padding: 0px;
     }
 
-    p1 {
-        line-height: 2.5em;
+    body {
+    }
+
+    .lefty {
+        float: left;
+        line-height: 1.75em;
+        color: darkslategrey;
+        font-size: 16px;
+    }
+
+    .righty {
+        float: right;
+        padding-right: 10%;
+        line-height: 1.75em;
+        text-align: right;
+        font-size: 16px;
+    }
+
+    .cash {
+        margin-left: -155px;
+        margin-top: 115px;
+        float: left;
+        line-height: 4em;
+        font-size: 10px;
         color: darkslategrey;
     }
 
-    p2 {
-        margin-left: 100px;
-        line-height: 2.5em;
-        text-align: right;
+    .reset {
+        margin-left: -95px;
+        margin-top: 115px;
+        float: left;
+        line-height: 4em;
+        font-size: 10px;
+        color: blue;
+    }
+
+    .cash-value {
+        margin-top: 145px;
+        margin-left: -155px;
+        float: left;
+        line-height: 1em;
+        font-size: 16px;
+        color: darkslategrey;
+    }
+
+    .profit-loss-day {
+        margin-top: 13px;
+        margin-left: 325px;
+        float: left;
+        line-height: 1em;
+        font-size: 10px;
+        color: darkslategrey;
+    }
+
+    .profits {
+        margin-top: -5px;
+        margin-left: 325px;
+        float: left;
+        line-height: 1em;
+        font-size: 16px;
     }
 }
 
-.watchlist {
-    font-family: sans-serif;
-    color: #fff;
-    width: 400px;
-    height: 100vh;
-    top: 55%;
-    padding-left: 100px;
-    position: absolute;
-    border-color: darkslategrey;
-    border-right-style: solid;
-    border-right-width: 15px;
 
-    h1 {
-        margin-top: 10%;
-        color: white;
-        width: 100%;
-        padding: 0px;
-    }
-}
-.positions {
-    font-family: sans-serif;
-    color: #fff;
-    width: 52%;
-    height: 100vh;
-    left: 40%;
-    top: 10%;
-    padding-left: 75px;
-    position: absolute;
 
-    h1 {
-        color: white;
-        width: 100%;
-        padding: 0px;
+
+
+
+    .watchlist {
+        font-family: sans-serif;
+        color: #fff;
+        width: 400px;
+        height: 100vh;
+        top: 45%;
+        padding-left: 100px;
+        position: absolute;
+        border-color: darkslategrey;
+        border-right-style: solid;
+        border-right-width: 15px;
+
+        h1 {
+            margin-top: 10%;
+            color: white;
+            width: 100%;
+            padding: 0px;
+        }
     }
-    
-}
+
+    .positions {
+        font-family: sans-serif;
+        color: #fff;
+        width: 52%;
+        height: 100vh;
+        left: 32.5%;
+        top: 0%;
+        padding-left: 75px;
+        position: absolute;
+
+        h1 {
+            color: white;
+            width: 100%;
+            padding-left: 100px;
+        }
+    }

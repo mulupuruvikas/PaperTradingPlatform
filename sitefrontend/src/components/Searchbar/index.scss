@@ -1,18 +1,37 @@
 .search-bar {
-    height: 200px;
-    width: 40%;
+    height: 75px;
+    width: 100%;
     background: #1f1f1f;
-    position: absolute;
     top: 0;
-    left: 50px;
-    z-index: 3;
-    min-height: 500px;
+    left: 0px;
+    min-height: 7px;
+
+    .logo {
+        display: block;
+        padding: 8px 0;
+
+        img {
+            float: left;
+            display: block;
+            margin: 8px auto;
+            width: 150px;
+            height: auto;
+            padding-left: 15px;
+
+            &.sub-logo {
+                width: 50px;
+            }
+        }
+    }
 
     input {
-        fill: #000;
-        padding: 50%;
-        width: 20%;
-        height: 100px;
-        margin: 2em;
+        margin-left: 200px;
+        padding: 0%;
+        height: 35px;
+        width: 300px;
+        background-color: #000;
+        border-color: #000;
+        border: 5px solid black;
+        color: #fff;
     }
 }
