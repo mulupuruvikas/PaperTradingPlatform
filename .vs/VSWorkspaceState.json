@@ -1,11 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\sitefrontend",
-    "\\sitefrontend\\src",
-    "\\sitefrontend\\src\\components",
-    "\\sitefrontend\\src\\components\\Home",
-    "\\sitefrontend\\src\\components\\Sidebar"
+    "\\sitebackend"
   ],
   "PreviewInSolutionExplorer": false
 }

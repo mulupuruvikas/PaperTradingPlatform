@@ -6,13 +6,13 @@ import { faLineChart, faBriefcase, faFileCircleCheck} from '@fortawesome/free-so
 const Sidebar = () => (
     <div className='nav-bar'>
         <nav>
-            <NavLink exact="true" activeclassnamnpme="active" to="/">
+            <NavLink exact="true" activeclassnamnpme="active" to="/portfolio">
                 <FontAwesomeIcon icon={faBriefcase} color="#4d4d4e" />
             </NavLink>
-            <NavLink exact="true" activeclassname="active" className="about-link" to="/about">
+            <NavLink exact="true" activeclassname="active" className="about-link" to="/portfolio/trade">
                 <FontAwesomeIcon icon={faFileCircleCheck} color="#4d4d4e" />
             </NavLink>
-            <NavLink exact="true" activeclassname="active" className="contact-link" to="/contact">
+            <NavLink exact="true" activeclassname="active" className="contact-link" to="/portfolio/chart">
                 <FontAwesomeIcon icon={faLineChart} color="#4d4d4e" />
             </NavLink>
         </nav>

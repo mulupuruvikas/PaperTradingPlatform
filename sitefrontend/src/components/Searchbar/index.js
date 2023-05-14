@@ -5,11 +5,10 @@ import './index.scss'
 const Searchbar = () => {
     return (
         <div className="search-bar">
-            <Link className='logo' to='/'>
+            <Link className='logo' to='/portfolio'>
                 <img src={Logo} alt="logo" />
             </Link>
-
-            <input type="text" id="search" placeholder="Find a symbol" />    
+            <input type="text" id="search" placeholder=" Find a symbol" />    
         </div>
         
     )
