@@ -1,61 +1,45 @@
 from django.db import models
 
+##
+## PRIMARY KEYS HAVE NOT BEEN DETERMINED YET
+##
+
+
 # Create your models here.
-class User(models.Model):
-	name = models.CharField(max_length=100)
-	email = models.EmailField(unique=True)
-	password = models.CharField(max_length=100)
-	 
-	def __str__(self):
-		return self.name
+class Stock(models.Model):
+	symbol = models.CharField(max_length=4)
+	price = models.DecimalField(max_digits=10, decimal_places=2)
 
-class Portfolio(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	created = models.DateTimeField(auto_now_add=True)
-	cash = models.DecimalField(max_digits=10, max_decimal_places=2)
-	value = models.DecimalField(max_digits=10, max_decimal_places=2)
-
-	 
-	def __str__(self):
-		return self.user.name
-
-class Holding(models.Model):
-	portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
-	symbol = models.CharField(max_length=10)
-	quantity = models.IntegerField()
-	price = models.DecimalField(max_digits=10, max_decimal_places=2)
+class ActiveOrder(models.Model):
+	STATUS_CHOICES = [('W', 'Working'), ('F', 'Filled'), ('C', 'Cancelled')]
+	SIDE_CHOICES = [('B', 'Buy'),('S', 'Sell')]
+	TIF_CHOICES = [('IOC', 'ImmediateOrCancelled'), ('GFD', 'GoodForDay'), ('GTC', 'GoodTilCanceled'), ('AON', 'AllOrNone'), ('FOK', 'FillOrKill'), ('OCO', 'OneCancelsOther')]
 	
-	def __str__(self):
-		return self.symbol
-
-class Order(models.Model):
-	portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
-	symbol = models.CharField(max_length=10)
-	quantity = models.IntegerField()
-	price = models.DecimalField(max_digits=10, max_decimal_places=2)
-	action = models.BooleanField(default=True)
-	status = models.CharField(max_length=10, choices=(('OPEN', 'Open'), ('FILLED', 'Filled'), ('CANCELLED', 'Cancelled')))
-    created_at = models.DateTimeField(auto_now_add=True)
+	user = models.ForeignKey('User', on_delete=RESTRICT)
+	status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+	side = models.CharField(max_length=1, choices=SIDE_CHOICES)
+	quantity = models.SmallIntegerField()
+	tif = = models.CharField(max_length=3, choices=TIF_CHOICES)
+	stock = models.ForeignKey(Stock, on_delete=models.RESTRICT)	
 
 class Watchlist(models.Model):
-	portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
-
-class WatchShare(models.Model):
-	symbol = models.CharField(max_length=10)
-	price = models.DecimalField(max_digits=10, max_decimal_places=2)
-	volume = models.IntegerField()
-	day_low = models.DecimalField(max_digits=10, max_decimal_places=2)
-	day_high = models.DecimalField(max_digits=10, max_decimal_places=2)
+	stock = models.ForeignKey(Stock, on_delete=RESTRICT, primary_key=True)
+	user = models.ForeignKey(User, on_delete=RESTRICT)
 
 class Position(models.Model):
-	symbol = models.CharField(max_length=10)
-	purchase_price = models.DecimalField(max_digits=10, max_decimal_places=2)
-	current_price = models.DecimalField(max_digits=10, max_decimal_places=2)
-	quantity = models.IntegerField()
-	day_change = models.DecimalField(max_digits=10, max_decimal_places=2)
-	ytd_change = models.DecimalField(max_digits=10, max_decimal_places=2)
-	total_change = models.DecimalField(max_digits=10, max_decimal_places=2)
+	user = models.ForeignKey('User', on_delete=RESTRICT, primary_key=True)
+	stock = models.ForeignKey(Stock, on_delete=RESTRICT)
+	bought_at = models.DecimalField(max_digits=10, decimal_places=2)
+	p_l_day = models.DecimalField(max_digits=6, decimal_places=2)
+	p_l_total = models.DecimalField(max_digits=6, decimal_places=2)
 
-	def __str__(self):
-		return self.symbol
+class Portfolio(models.Model):
+	value = models.DecimalField(max_digits=20, decimal_places=2)
+	cash = models.DecimalField(max_digits=20, decimal_places=2)
+	p_l = models.DecimalField(max_digits=6, decimal_places=2)
+	stock_buying_power = models.DecimalField(max_digits=20, decimal_places=2)
+	option_buying_power = models.DecimalField(max_digits=20, decimal_places=2)
 
+class User(models.Model):
+	name = models.CharField(max_length=15, primary_key=True)
+	portfolio = ForeignKey(Portfolio, on_delete=models.CASCADE) #Needs a create function when serialized

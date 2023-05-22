@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    "\\sitebackend"
+    "",
+    "\\sitebackend",
+    "\\sitebackend\\api",
+    "\\sitebackend\\sitebackend"
   ],
+  "SelectedNode": "\\sitebackend\\api\\models.py",
   "PreviewInSolutionExplorer": false
 }
