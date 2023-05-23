@@ -1,7 +1,7 @@
 from django.db import models
 
 ##
-## PRIMARY KEYS HAVE NOT BEEN DETERMINED YET
+## PRIMARY KEYS HAVE NOT BEEN DETERMINED YET, but fuck it we ball
 ##
 
 
