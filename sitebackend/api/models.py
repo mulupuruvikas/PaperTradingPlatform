@@ -6,7 +6,9 @@ from django.db import models
 
 
 # Create your models here.
-class Stock(models.Model):
+
+##TEMPORARY, will be using the stock data models from the external API
+class Stock(models.Model): 
 	symbol = models.CharField(max_length=4)
 	price = models.DecimalField(max_digits=10, decimal_places=2)
 
