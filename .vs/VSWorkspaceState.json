@@ -5,6 +5,6 @@
     "\\sitebackend\\api",
     "\\sitebackend\\sitebackend"
   ],
-  "SelectedNode": "\\sitebackend\\api\\models.py",
+  "SelectedNode": "\\sitebackend\\sitebackend\\settings.py",
   "PreviewInSolutionExplorer": false
 }
