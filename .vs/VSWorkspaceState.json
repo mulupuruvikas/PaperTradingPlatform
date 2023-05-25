@@ -3,7 +3,9 @@
     "",
     "\\sitebackend",
     "\\sitebackend\\api",
+    "\\sitebackend\\api\\migrations",
     "\\sitebackend\\sitebackend"
   ],
+  "SelectedNode": "\\sitebackend\\api\\models.py",
   "PreviewInSolutionExplorer": false
 }
