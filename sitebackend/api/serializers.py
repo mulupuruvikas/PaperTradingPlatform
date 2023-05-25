@@ -7,14 +7,12 @@ class StockSerializer(serializers.ModelSerializer):
         fields = ['id', 'symbol', 'price']
 
 class ActiveOrderSerializer(serializers.ModelSerializer):
-    stock = StockSerializer()
 
     class Meta:
         model = ActiveOrder
         fields = ['id', 'user', 'status', 'side', 'quantity', 'tif', 'stock']
 
 class WatchlistSerializer(serializers.ModelSerializer):
-    stock = StockSerializer()
 
     class Meta:
         model = Watchlist
@@ -23,7 +21,6 @@ class WatchlistSerializer(serializers.ModelSerializer):
 
 
 class PositionSerializer(serializers.ModelSerializer):
-    stock = StockSerializer()
 
     class Meta:
         model = Position
@@ -32,7 +29,7 @@ class PositionSerializer(serializers.ModelSerializer):
 class PortfolioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Portfolio
-        fields = ['id', 'value', 'cash', 'p_l', 'value_buying_power', 'option_buying_power']
+        fields = ['id', 'value', 'cash', 'p_l', 'stock_buying_power', 'option_buying_power']
 
 class UserSerializer(serializers.ModelSerializer):
     portfolio = PortfolioSerializer()
@@ -40,3 +37,23 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'name', 'portfolio']
+
+    def create(self, validated_data):
+        portfolio_data = validated_data.pop('portfolio')
+        portfolio = Portfolio.objects.create(**portfolio_data)
+
+        user = User.objects.create(portfolio=portfolio, **validated_data)
+        return user
+
+    def update(self, instance, validated_data):
+        portfolio_data = validated_data.pop('portfolio')
+        portfolio = instance.portfolio
+        # Update the nested portfolio object
+        for attr, value in portfolio_data.items():
+            setattr(portfolio, attr, value)
+        portfolio.save()
+        # Update the user object
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance

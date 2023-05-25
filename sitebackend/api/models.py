@@ -34,7 +34,7 @@ class Position(models.Model):
 class Portfolio(models.Model):
     value = models.DecimalField(max_digits=20, decimal_places=2)
     cash = models.DecimalField(max_digits=20, decimal_places=2)
-    p_l = models.DecimalField(max_digits=6, decimal_places=2)
+    p_L = models.DecimalField(max_digits=6, decimal_places=2)
     stock_buying_power = models.DecimalField(max_digits=20, decimal_places=2)
     option_buying_power = models.DecimalField(max_digits=20, decimal_places=2)
 
