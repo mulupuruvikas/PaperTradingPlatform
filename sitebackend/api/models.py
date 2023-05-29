@@ -4,7 +4,7 @@ from django.db import models
 from django.db import models
 
 class Stock(models.Model):
-    symbol = models.CharField(max_length=4)
+    symbol = models.CharField(max_length=4, unique=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
 class ActiveOrder(models.Model):
@@ -39,5 +39,5 @@ class Portfolio(models.Model):
     option_buying_power = models.DecimalField(max_digits=20, decimal_places=2)
 
 class User(models.Model):
-    name = models.CharField(max_length=15)
-    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
+    name = models.CharField(max_length=15, unique=True)
+    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE, unique=True)

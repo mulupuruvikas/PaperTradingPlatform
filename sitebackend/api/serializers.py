@@ -29,7 +29,7 @@ class PositionSerializer(serializers.ModelSerializer):
 class PortfolioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Portfolio
-        fields = ['id', 'value', 'cash', 'p_l', 'stock_buying_power', 'option_buying_power']
+        fields = ['id', 'value', 'cash', 'p_L', 'stock_buying_power', 'option_buying_power']
 
 class UserSerializer(serializers.ModelSerializer):
     portfolio = PortfolioSerializer()

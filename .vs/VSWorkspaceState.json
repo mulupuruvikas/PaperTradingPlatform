@@ -1,11 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\sitebackend",
-    "\\sitebackend\\api",
     "\\sitebackend\\api\\migrations",
-    "\\sitebackend\\sitebackend"
+    "\\sitebackend\\sitebackend",
+    "\\sitefrontend",
+    "\\sitefrontend\\src",
+    "\\sitefrontend\\src\\components",
+    "\\sitefrontend\\src\\components\\Home"
   ],
-  "SelectedNode": "\\sitebackend\\sitebackend\\settings.py",
+  "SelectedNode": "\\sitefrontend\\src\\index.js",
   "PreviewInSolutionExplorer": false
 }
