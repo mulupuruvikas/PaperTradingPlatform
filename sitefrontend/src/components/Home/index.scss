@@ -2,130 +2,180 @@
     background: #000;
     padding-left: 0px;
     margin: 0px;
-    top: 0px;
+    top: 20px;
+    position: relative; 
+    display: flex;
+
 }
-.account-summary {
-    text-align: left;
-    font-family: sans-serif;
-    color: #fff;
-    width: 400px;
-    height: 45%;
-    top: 0%;
-    padding-left: 100px;
+
+.mainblock {
     position: absolute;
-    border-color: darkslategrey;
-    border-right-style: solid;
-    border-right-width: 15px;
-    border-bottom-style: solid;
-    border-bottom-width: 15px;
+    margin-left: 20%;
+    width: 50%;
+    height: 40%;
 
-    h1 {
-        color: white;
-        width: 100%;
-        padding: 0px;
+    .account-details {
+        margin-left: -4%;
+        background: #1d1d1e;
+        margin-top: 3%;
+        color: #fff;
+        width: 70%;
+        height: 100%;
+        border-radius: 20px;
+
+        h1 {
+            padding-top: 20px;
+            padding-left: 20px;
+            font-size: 20px;
+            width: 100%;
+            color: slateblue;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+
+        .left-column {
+            width: fit-content;
+            position: absolute;
+
+            p {
+                margin-top: 0px;
+                font-size: 14px;
+                padding-left: 20px;
+                color: gray;
+                margin-bottom: 10px;
+            }
+        }
+
+        .right-column {
+            position: absolute;
+            width: fit-content;
+            margin-left: 50%;
+
+            p {
+                margin-top: 0px;
+                text-align: right;
+                font-size: 14px;
+                padding-left: 20px;
+                color: white;
+                margin-bottom: 10px;
+            }
+        }
+
+        .bottom-column {
+            margin-left: 20px;
+            margin-top: 20%;
+
+            p {
+                font-size: 11px;
+                color: white;
+            }
+
+            .bottom-stats-label {
+                display: flex;
+                width: 375px;
+
+                p {
+                    color: slategray;
+                    width: fit-content;
+                    flex: 1;
+                }
+            }
+
+            .bottom-stats {
+                display: flex;
+                width: 375px;
+                margin-top: -5%;
+
+                h2 {
+                    font-size: 15px;
+                    color: white;
+                    width: fit-content;
+                    flex: 1;
+                }
+            }
+        }
     }
-
-    body {
-    }
-
-    .lefty {
-        float: left;
-        line-height: 1.75em;
-        color: darkslategrey;
-        font-size: 16px;
-    }
-
-    .righty {
-        float: right;
-        padding-right: 10%;
-        line-height: 1.75em;
-        text-align: right;
-        font-size: 16px;
-    }
-
-    .cash {
-        margin-left: -155px;
-        margin-top: 115px;
-        float: left;
-        line-height: 4em;
-        font-size: 10px;
-        color: darkslategrey;
-    }
-
-    .reset {
-        margin-left: -95px;
-        margin-top: 115px;
-        float: left;
-        line-height: 4em;
-        font-size: 10px;
-        color: blue;
-    }
-
-    .cash-value {
-        margin-top: 145px;
-        margin-left: -155px;
-        float: left;
-        line-height: 1em;
-        font-size: 16px;
-        color: darkslategrey;
-    }
-
-    .profit-loss-day {
-        margin-top: 13px;
-        margin-left: 325px;
-        float: left;
-        line-height: 1em;
-        font-size: 10px;
-        color: darkslategrey;
-    }
-
-    .profits {
-        margin-top: -5px;
-        margin-left: 325px;
-        float: left;
-        line-height: 1em;
-        font-size: 16px;
-    }
-}
-
-
-
-
-
 
     .watchlist {
-        font-family: sans-serif;
+        margin-left: -4%;
+        background: #1d1d1e;
+        margin-top: 3%;
         color: #fff;
-        width: 400px;
-        height: 100vh;
-        top: 45%;
-        padding-left: 100px;
-        position: absolute;
-        border-color: darkslategrey;
-        border-right-style: solid;
-        border-right-width: 15px;
+        width: 70%;
+        height: 100%;
+        border-radius: 20px;
 
         h1 {
-            margin-top: 10%;
-            color: white;
+            padding-top: 20px;
+            padding-left: 20px;
+            font-size: 20px;
             width: 100%;
-            padding: 0px;
+            color: slateblue;
+            margin-bottom: 10px;
+            padding-bottom: 0px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+            color: slategrey;
+        }
+
+        table {
+            color: #fff;
+            margin-left: 20px;
+            font-size: 14px;
+            text-align: right;
+            width: 375px;
+            border-spacing: 0;
+
+            thead {
+                width: 80px;
+                border-bottom: 1px solid white;
+
+                th {
+                    padding: 0px;
+                    margin: 0px;
+                    border-top: 1px solid #454545;
+                    border-bottom: 1px solid #454545;
+                }
+            }
+
+            tbody {
+                margin: 0px;
+                width: 40px;
+                text-align: right;
+                font-size: 13px;
+
+                td {
+                    padding-left: 0px;
+                    padding-right: 0px;
+                }
+
+                .even-row {
+                    background-color: #1d1d1e;
+                }
+
+                .odd-row {
+                    background-color: #000;
+                }
+            }
         }
     }
+}
 
-    .positions {
-        font-family: sans-serif;
-        color: #fff;
-        width: 52%;
-        height: 100vh;
-        left: 32.5%;
-        top: 0%;
-        padding-left: 75px;
-        position: absolute;
+.rightblock {
+    position: absolute;
+    margin-left: 55.5%;
+    top: 7.5%;
+    width: 20%;
 
-        h1 {
-            color: white;
-            width: 100%;
-            padding-left: 100px;
-        }
+    .portfoliotitle {
+        color: white;
     }
+}
+
+.bottomblock {
+    
+}

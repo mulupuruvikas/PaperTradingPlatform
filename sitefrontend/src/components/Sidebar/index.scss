@@ -1,6 +1,6 @@
 .nav-bar {
     background: #1d1d1e;
-    width: 60px;
+    width: 200px;
     height: 100%;
     position: absolute;
     top: 60px;
@@ -25,10 +25,11 @@
 
     nav {
         display: block;
-        text-align: center;
+        text-align: left;
+        margin-left: 30px;
         position: absolute;
         height: 210px;
-        top: 50%;
+        top: 30%;
         margin-top: -120px;
         width: 100%;
 
@@ -44,16 +45,15 @@
             i {
                 transition: all 0.3s ease-out;
             }
+            h1 {
+                font-size: 18px;
+            }
 
             &:hover {
-                color: #1F51FF;
-
-                svg {
-                    opacity: 0;
-                }
 
                 &:after {
                     opacity: 1;
+                    color: #4d4d4e;
                 }
             }
 
@@ -70,31 +70,10 @@
                 -webkit-transition: all 0.3s ease-out;
                 transition: all 0.3s ease-out;
             }
-
-            &:first-child {
-                &:after {
-                    content: 'HOME';
-                }
-            }
-        }
-
-        a.about-link {
-            &:after {
-                content: 'TRADE';
-            }
-        }
-
-        a.contact-link {
-            &:after {
-                content: 'CHARTS';
-            }
         }
 
 
         a.active {
-            svg {
-                color: #1F51FF;
-            }
         }
     }
 
@@ -114,10 +93,6 @@
                 display: block;
                 font-size: 15px;
                 line-height: 16px;
-
-                &:hover svg {
-                    color: #1F51FF;
-                }
             }
         }
     }

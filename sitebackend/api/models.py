@@ -3,10 +3,6 @@ from django.db import models
 # Create your models here.
 from django.db import models
 
-class Stock(models.Model):
-    symbol = models.CharField(max_length=4, unique=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-
 class ActiveOrder(models.Model):
     STATUS_CHOICES = [('W', 'Working'), ('F', 'Filled'), ('C', 'Cancelled')]
     SIDE_CHOICES = [('B', 'Buy'), ('S', 'Sell')]
@@ -18,26 +14,22 @@ class ActiveOrder(models.Model):
     side = models.CharField(max_length=1, choices=SIDE_CHOICES)
     quantity = models.SmallIntegerField()
     tif = models.CharField(max_length=3, choices=TIF_CHOICES)
-    stock = models.OneToOneField(Stock, on_delete=models.RESTRICT)
+    symbol = models.CharField(max_length=6, default=None)
 
 class Watchlist(models.Model):
-    stock = models.OneToOneField(Stock, on_delete=models.RESTRICT)
+    symbol = models.CharField(max_length=6, default=None)
     user = models.ForeignKey('User', on_delete=models.RESTRICT)
 
 class Position(models.Model):
     user = models.ForeignKey('User', on_delete=models.RESTRICT)
-    stock = models.ForeignKey(Stock, on_delete=models.RESTRICT)
+    symbol = models.CharField(max_length=6, default=None)
     bought_at = models.DecimalField(max_digits=10, decimal_places=2)
-    p_l_day = models.DecimalField(max_digits=6, decimal_places=2)
-    p_l_total = models.DecimalField(max_digits=6, decimal_places=2)
 
 class Portfolio(models.Model):
-    value = models.DecimalField(max_digits=20, decimal_places=2)
-    cash = models.DecimalField(max_digits=20, decimal_places=2)
-    p_L = models.DecimalField(max_digits=6, decimal_places=2)
-    stock_buying_power = models.DecimalField(max_digits=20, decimal_places=2)
-    option_buying_power = models.DecimalField(max_digits=20, decimal_places=2)
+    cash = models.DecimalField(max_digits=20, decimal_places=2, default=200000)
+    stock_buying_power = models.DecimalField(max_digits=20, decimal_places=2, default=300000)
+    option_buying_power = models.DecimalField(max_digits=20, decimal_places=2, default=200000)
 
 class User(models.Model):
-    name = models.CharField(max_length=15, unique=True)
-    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE, unique=True)
+    email = models.EmailField(unique=True)
+    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)

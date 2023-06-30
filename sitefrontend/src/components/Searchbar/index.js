@@ -1,14 +1,35 @@
-import Logo from '../../assets/images/full-logo.png'
-import { Link } from 'react-router-dom'
 import './index.scss'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Searchbar = () => {
+
+    const [inputValue, setInputValue] = useState('');
+    const navigate = useNavigate();
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            console.log('Input value:', inputValue);
+            navigate("/portfolio/trade", { state: { symbol: inputValue } });
+            setInputValue('');
+        }
+    };
+
+    const handleChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
     return (
         <div className="search-bar">
-            <Link className='logo' to='/portfolio'>
-                <img src={Logo} alt="logo" />
-            </Link>
-            <input type="text" id="search" placeholder=" Find a symbol" />    
+            <input
+                type="text"
+                id="search"
+                placeholder=" Find a symbol"
+                value={inputValue}
+                onChange={handleChange}
+                onKeyDown={handleKeyPress}
+            />
         </div>
         
     )

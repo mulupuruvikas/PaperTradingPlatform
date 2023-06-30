@@ -1,13 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\sitebackend\\api\\migrations",
-    "\\sitebackend\\sitebackend",
+    "\\sitebackend",
     "\\sitefrontend",
     "\\sitefrontend\\src",
     "\\sitefrontend\\src\\components",
-    "\\sitefrontend\\src\\components\\Home"
+    "\\sitefrontend\\src\\components\\Login",
+    "\\sitefrontend\\src\\components\\Sidebar",
+    "\\sitefrontend\\src\\components\\Trade"
   ],
-  "SelectedNode": "\\sitefrontend\\src\\index.js",
+  "SelectedNode": "\\sitefrontend\\src\\components\\Trade\\index.js",
   "PreviewInSolutionExplorer": false
 }

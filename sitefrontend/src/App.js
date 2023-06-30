@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Layout from './/components/Layout'
@@ -19,7 +19,7 @@ function App() {
                         <Route path="/portfolio/trade" element={<Trade />} />
                         <Route path="/portfolio/chart" element={<Chart />} />
                     </Route>
-                </Route>            
+                </Route>
             </Routes>
         </>
     );
