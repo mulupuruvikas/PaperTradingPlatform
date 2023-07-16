@@ -42,7 +42,9 @@ const Login = () => {
                                 }
                             })
                                 .then((res) => {
+                                    console.log("Users:", users);
                                     userId = users[0].id;
+                                    console.log("Sending to homepage");
                                     navigate("/portfolio", { state: { id: userId } });
                                 })
                             .catch((error) => {

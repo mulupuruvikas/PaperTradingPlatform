@@ -23,26 +23,78 @@ class ActiveOrderListCreateView(generics.ListCreateAPIView):
     queryset = ActiveOrder.objects.all()
     serializer_class = ActiveOrderSerializer
 
+    def get_queryset(self):
+        queryset = ActiveOrder.objects.all()
+        user = self.request.query_params.get('user')
+        if user is not None:
+            queryset = queryset.filter(user=user)
+        return queryset
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        # Add any additional logic or validations before saving the instance
+        # For example, you can retrieve the user object using the user_id
+        user_id = request.data.get('user')
+        user = User.objects.get(id=user_id)
+        serializer.validated_data['user'] = user
+
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
 class ActiveOrderRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ActiveOrder.objects.all()
     serializer_class = ActiveOrderSerializer
 
 class WatchlistListCreateView(generics.ListCreateAPIView):
-    queryset = Watchlist.objects.all()
     serializer_class = WatchlistSerializer
 
     def get_queryset(self):
-        user_id = self.request.query_params.get('user')
-        queryset = Watchlist.objects.filter(user=user_id)
+        queryset = Watchlist.objects.all()
+        user = self.request.query_params.get('user')
+        symbol = self.request.query_params.get('symbol')
+        if user is not None and symbol is not None:
+            queryset = queryset.filter(user=user, symbol=symbol)
+        elif user is not None:
+            queryset = queryset.filter(user=user)
+        elif symbol is not None:
+            queryset = queryset.filter(symbol=symbol)
         return queryset
 
+    def create(self, request, *args, **kwargs):
+        user_id = request.data.get('user')
+        symbol = request.data.get('symbol')
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return Response({'error': 'Invalid user ID'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        watchlist = Watchlist(user=user, symbol=symbol)
+        watchlist.save()
+        serializer = self.get_serializer(watchlist)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 class WatchlistRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Watchlist.objects.all()
     serializer_class = WatchlistSerializer
+    queryset = Watchlist.objects.all()
+
+    def delete(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PositionListCreateView(generics.ListCreateAPIView):
     queryset = Position.objects.all()
     serializer_class = PositionSerializer
+
+    def get_queryset(self):
+        queryset = Position.objects.all()
+        user = self.request.query_params.get('user')
+        if user is not None:
+            queryset = queryset.filter(user=user)
+        return queryset
 
 class PositionRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Position.objects.all()
@@ -51,7 +103,6 @@ class PositionRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 class PortfolioListCreateView(generics.ListCreateAPIView):
     queryset = Portfolio.objects.all()
     serializer_class = PortfolioSerializer
-    print("entering view")
 
     def post(self, request, *args, **kwargs):
         print("entering post method")

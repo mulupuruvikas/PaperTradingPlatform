@@ -1,16 +1,25 @@
 .search-bar {
-    height: 40px;
-    width: 75%;
+    height: 60px;
+    width: 100%;
     background: #1d1d1e;
     top: 0;
     left: 0px;
     min-height: 7px;
     position: relative;
-    margin-left: 250px;
+    margin-left: 0px;
+    display: flex;
+    justify-content: left;
+
+    img {
+        margin-top: 5px;
+        margin-left: 20px;
+        height: 50px;
+        width: auto;
+    }
 
     input {
+        margin-left: 20%;
         margin-top: 10px;
-        margin-left: 200px;
         padding: 0%;
         height: 35px;
         width: 300px;

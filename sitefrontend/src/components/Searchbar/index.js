@@ -2,7 +2,7 @@ import './index.scss'
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Searchbar = () => {
+const Searchbar = (props) => {
 
     const [inputValue, setInputValue] = useState('');
     const navigate = useNavigate();
@@ -11,7 +11,8 @@ const Searchbar = () => {
         if (event.key === 'Enter') {
             event.preventDefault();
             console.log('Input value:', inputValue);
-            navigate("/portfolio/trade", { state: { symbol: inputValue } });
+            console.log('User ID:', props.id);
+            navigate("/portfolio/trade", { state: { symbol: inputValue.toUpperCase(), id: props.id } });
             setInputValue('');
         }
     };
@@ -20,8 +21,18 @@ const Searchbar = () => {
         setInputValue(event.target.value);
     };
 
+    const handleHomeClick = () => {
+        navigate("/portfolio", { state: { id: props.id } });
+        setInputValue('');
+    }
+
     return (
         <div className="search-bar">
+            <img
+                src={process.env.PUBLIC_URL + '/full-logo.png'}
+                onClick={handleHomeClick}
+                alt="home-logo"
+            />
             <input
                 type="text"
                 id="search"

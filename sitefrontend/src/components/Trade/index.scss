@@ -1,0 +1,377 @@
+.trade-page {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    padding-left: 0px;
+    margin: 0px;
+    top: 0px;
+}
+
+
+.chart-block {
+    margin: 0px;
+    padding: 0px;
+    background: #1D1D1E;
+    margin-top: 1%;
+    width: fit-content;
+    height: fit-content;
+    margin-left: 2%;
+    border-radius: 20px;
+
+    h1 {
+        font-size: 25px;
+        fill: white;
+        color: white;
+        text-align: left;
+        padding-left: 15px;
+        padding-top: 10px;
+    }
+    h2 {
+        font-size: 15px;
+        fill: white;
+        color: white;
+        text-align: left;
+        padding-left: 15px;
+        margin-top: -20px;
+        margin-bottom: 5px;
+        padding-bottom: 0px;
+    }
+
+    .chart {
+        width: fit-content;
+        margin-top: 2%;
+        margin-left: 3%;
+    }
+}
+
+.company-details {
+    position: absolute;
+    background: #1d1d1e;
+    border-radius: 20px;
+    height: fit-content;
+    width: 350px;
+    margin-left: 69%;
+    margin-top: 10%;
+        
+
+    .label-column {
+        color: slategray;
+        padding-left: 20px;
+        font-size: 12px;
+            
+    }
+
+    .info-column {
+        color: white;
+        text-align: right; 
+        margin-top: -57.7%;
+        padding-right: 20px;
+        font-size: 12px;
+    }
+}
+
+.price {
+    position: absolute;
+    background: #1d1d1e;
+    border-radius: 15px;
+    height: fit-content;
+    width: 350px;
+    left: 69%;
+    top: 2.5%;
+
+    .dollar {
+        color: white;
+        padding-left: 20px;
+        font-size: 17px;
+    }
+
+    .percent {
+        text-align: right;
+        padding-right: 20px;
+        margin-top: -70px;
+        font-size: 17px;
+    }
+}
+.buttons {
+    margin-top: 30%;
+    margin-left: 1.5%;
+
+    .buy {
+        border-radius: 20px;
+        width: 165px;
+        height: 50px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+        background: green;
+        border: none;
+        font-size: 15px;
+    }
+
+    .sell {
+        background: red;
+        border: none;
+        border-radius: 20px;
+        width: 165px;
+        height: 50px;
+        margin-bottom: 10px;
+        font-size: 15px;
+    }
+
+    .add {
+        border: none;
+        width: 350px;
+        height: 35px;
+        border-radius: 10px;
+        background: blue;
+    }
+}
+
+.popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px; /* Adjust the height as needed */
+    background: #0b1d38;
+    z-index: 998;
+
+    .shorthand {
+        height: 25%;
+        background: #041023;
+        border-color: #356dab;
+        border-top-style: solid;
+        border-bottom-style: solid;
+        display: flex;
+
+        h1 {
+            color: white;
+            margin-left: 20px;
+        }
+
+        .x {
+            margin-top: 1.5%;
+            position: fixed;
+            margin-left: 95%;
+            transform: scale(3);
+            text-align: right;
+        }
+    }
+}
+.toggle {
+    top: 20%;
+    left: 10%;
+    --width: 80px;
+    --height: calc(var(--width) / 3);
+    position: relative;
+    display: inline-block;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--height);
+    cursor: pointer;
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--height);
+    background-color:   red;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle .slider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--height));
+    height: calc(var(--height));
+    border-radius: calc(var(--height) / 2);
+    background-color: #fff;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle input:checked + .slider {
+    background-color: green;
+}
+
+.toggle input:checked + .slider::before {
+    transform: translateX(calc(var(--width) - var(--height)));
+}
+
+.toggle .labels {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    left: 6px;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-family: sans-serif;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle .labels::after {
+    content: attr(data-off);
+    position: absolute;
+    right: 15px;
+    color: #fff;
+    opacity: 1;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle .labels::before {
+    content: attr(data-on);
+    position: absolute;
+    left: 5px;
+    color: #ffffff;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggle input:checked ~ .labels::after {
+    opacity: 0;
+}
+
+.toggle input:checked ~ .labels::before {
+    opacity: 1;
+}
+
+.type {
+    position: fixed;
+    top: 81%;
+    left: 60%;
+    --width: 100px;
+    --height: calc(var(--width) / 3);
+    display: inline-block;
+    width: var(--width);
+    height: var(--height);
+    cursor: pointer;
+    color: white;
+    background: #041023;
+    border-color: #356dab;
+    border-top-style: solid;
+    border-bottom-style: solid;
+}
+option {
+    border-top: 2px solid#356dab;
+}
+
+.tif {
+    position: fixed;
+    top: 89%;
+    left: 60%;
+    --width: 100px;
+    --height: calc(var(--width) / 3);
+    display: inline-block;
+    width: var(--width);
+    height: var(--height);
+    cursor: pointer;
+    color: white;
+    background: #041023;
+    border-color: #356dab;
+    border-top-style: solid;
+    border-bottom-style: solid;
+}
+
+.count {
+    position: fixed;
+    left: 20%;
+    top: 75%;
+    color: white;
+
+    h2 {
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+
+    input {
+        color: white;
+        height: 30px;
+        border-width: 1px;
+        border-style: solid;
+        background: #041023;
+        border-color: #356dab;
+        border-top-style: solid;
+        border-bottom-style: solid;
+    }
+}
+
+.pricebox {
+    position: fixed;
+    left: 40%;
+    top: 75%;
+    color: white;
+
+    h2 {
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+
+    input {
+        color: white;
+        height: 30px;
+        border-width: 1px;
+        border-style: solid;
+        background: #041023;
+        border-color: #356dab;
+        border-top-style: solid;
+        border-bottom-style: solid;
+    }
+}
+
+.activationbox {
+    position: fixed;
+    left: 40%;
+    top: 86%;
+    color: white;
+
+    h2 {
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+
+    input {
+        color: white;
+        height: 30px;
+        border-width: 1px;
+        border-style: solid;
+        background: #041023;
+        border-color: #356dab;
+        border-top-style: solid;
+        border-bottom-style: solid;
+    }
+}
+
+.orderbuttons {
+    position: fixed;
+    top: 80%;
+    left: 82.5%;
+    width: 110px;
+
+    .deleteorder {
+        width: 120px;
+        height: 36.5px;
+        border-radius: 15px;
+        color: white;
+        background: #0b1d38;
+        border: 3px solid #356dab;
+        margin-bottom: 10px;
+    }
+
+    .createorder {
+        width: 120px;
+        height: 36.5px;
+        border-radius: 15px;
+        color: white;
+        background: #356dab;
+        border: 3px solid #356dab;
+    }
+}

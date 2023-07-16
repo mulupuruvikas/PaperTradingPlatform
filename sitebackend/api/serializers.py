@@ -5,7 +5,7 @@ class ActiveOrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ActiveOrder
-        fields = ['id', 'user', 'status', 'side', 'quantity', 'tif', 'symbol']
+        fields = ['id', 'user', 'status', 'side', 'tif', 'type', 'expiration_date', 'order_date', 'num_shares', 'symbol', 'ask', 'activation_price']
 
     def validate(self, attrs):
         if attrs.get('symbol') is None:
@@ -27,7 +27,7 @@ class PositionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Position
-        fields = ['id', 'user', 'bought_at', 'symbol']
+        fields = ['id', 'user', 'bought_at', 'symbol', 'num_shares']
 
     def validate(self, attrs):
         if attrs.get('symbol') is None:

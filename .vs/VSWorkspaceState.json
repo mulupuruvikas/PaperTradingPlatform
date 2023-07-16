@@ -2,13 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\sitebackend",
+    "\\sitebackend\\api",
     "\\sitefrontend",
     "\\sitefrontend\\src",
+    "\\sitefrontend\\src\\assets",
     "\\sitefrontend\\src\\components",
-    "\\sitefrontend\\src\\components\\Login",
-    "\\sitefrontend\\src\\components\\Sidebar",
+    "\\sitefrontend\\src\\components\\Chart",
     "\\sitefrontend\\src\\components\\Trade"
   ],
-  "SelectedNode": "\\sitefrontend\\src\\components\\Trade\\index.js",
+  "SelectedNode": "\\sitebackend\\api\\models.py",
   "PreviewInSolutionExplorer": false
 }
