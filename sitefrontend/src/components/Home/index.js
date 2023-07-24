@@ -28,7 +28,6 @@ const Home = () => {
     const fetchStockData = (symbol) => {
         const apiKey = 'cie9nspr01qmfas4b65gcie9nspr01qmfas4b660';
         const apiUrl = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`;
-        console.log();
 
         return axios.get(apiUrl)
             .then((response) => {
@@ -126,17 +125,20 @@ const Home = () => {
         })
             .then((response) => {
                 const responseArray = response.data;
-                console.log("Actives:", responseArray);
+                console.log(response.data);
                 let promises = [];
                 const data = responseArray.map((element) => {
                     const promise = fetchStockData(element.symbol)
                         .then((priceResponse) => {
                             const p = priceResponse.p;
+                            
                             return {
-                                time: element.expiration,
+                                id: element.id,
+                                time: element.expiration_date,
                                 symbol: element.symbol,
                                 side: element.side,
                                 qty: element.num_shares,
+                                ask: element.ask,
                                 price: p,
                                 tif: element.tif,
                                 type: element.type,
@@ -150,9 +152,9 @@ const Home = () => {
                 });
                 Promise.all(promises)
                     .then((results) => {
-                        const filteredData = results.filter((item) => item !== null);
-                        setActives(filteredData);
-                        setAllActivesAreEmpty(filteredData.length === 0);
+                        const filteredActives = results.filter((item) => item !== null);
+                        setActives(filteredActives);
+                        setAllActivesAreEmpty(filteredActives.length === 0);
                     })
                     .catch((error) => {
                         console.error('Error fetching stock prices:', error);
@@ -226,29 +228,20 @@ const Home = () => {
         return (value + '%');
     }
 
-    const removeItem = (rmsymb) => {
-        console.log('Symbol:', rmsymb);
+    const removeItem = (item) => {
+        console.log('id to remove:', item.id);
         axios
-            .get('http://localhost:8000/watchlist/', {
-                params: { user: usernumber, symbol: rmsymb }
-            })
+            .delete(`http://localhost:8000/active-orders/${item.id}`)
             .then(response => {
-                console.log(response.data);
-                const itemId = response.data[0].id;
-                console.log("Response data:", itemId);
-                axios
-                    .delete(`http://localhost:8000/watchlist/${itemId}`)
-                    .then(response => {
-                        console.log('Deleted:', response.data);
-                    })
-                    .catch(error => {
-                        console.error('Error deleting:', error);
-                    });
+                console.log('Deleted:', response.data);
+                // Add any necessary logic after the successful deletion
             })
             .catch(error => {
-                console.error('Error fetching account details:', error);
+                console.error('Error deleting:', error);
             });
     };
+
+    console.log("Actives", actives);
 
     return (
         <div className="home-page">
@@ -328,6 +321,7 @@ const Home = () => {
                                             <th>Side</th>
                                             <th>Qty</th>
                                             <th>Price</th>
+                                            <th>Ask</th>
                                             <th>TIF</th>
                                             <th>Type</th>
                                         </tr>
@@ -340,9 +334,10 @@ const Home = () => {
                                                 <td>{item.side}</td>
                                                 <td>{item.qty}</td>
                                                 <td>{item.price}</td>
+                                                <td>{item.ask}</td>
                                                 <td>{item.tif}</td>
                                                 <td>{item.type}</td>
-                                                <td style={{ backgroundColor: '#1d1d1e' }}><FontAwesomeIcon className="xicon" icon={faXmark} color="#fff" onClick={removeItem(item.symbol)} /></td>
+                                                <td style={{ backgroundColor: '#1d1d1e' }}><FontAwesomeIcon className="xicon" icon={faXmark} color="#fff" onClick={() => removeItem(item)} /></td>
                                             </tr>
                                         ))}
                                             

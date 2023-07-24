@@ -8,8 +8,8 @@
     "\\sitefrontend\\src\\assets",
     "\\sitefrontend\\src\\components",
     "\\sitefrontend\\src\\components\\Chart",
-    "\\sitefrontend\\src\\components\\Trade"
+    "\\sitefrontend\\src\\components\\Home"
   ],
-  "SelectedNode": "\\sitebackend\\api\\models.py",
+  "SelectedNode": "\\sitefrontend\\src\\components\\Home\\index.js",
   "PreviewInSolutionExplorer": false
 }

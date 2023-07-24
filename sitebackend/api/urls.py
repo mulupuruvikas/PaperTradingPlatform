@@ -11,7 +11,9 @@ from .views import (
 urlpatterns = [
     path('api/login', login),
     path('active-orders/', ActiveOrderListCreateView.as_view(), name='active-order-list'),
+    path('active-orders/', ActiveOrderListCreateView.as_view(), name='active-order-list'),
     path('active-orders/<int:pk>/', ActiveOrderRetrieveUpdateDestroyView.as_view(), name='active-order-detail'),
+    path('active-orders/delete/', ActiveOrderRetrieveUpdateDestroyView.as_view(), name='active-order-delete-by-date'),
     path('watchlist/', WatchlistListCreateView.as_view(), name='watchlist-list'),
     path('watchlist/<int:pk>/', WatchlistRetrieveUpdateDestroyView.as_view(), name='watchlist-detail'),
     path('positions/', PositionListCreateView.as_view(), name='position-list'),

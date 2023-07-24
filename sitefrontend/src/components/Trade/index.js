@@ -234,16 +234,54 @@ const Trade = () => {
     const handleNewOrder = (event) => {
         console.log("Entered event handler");
         const currentDate = new Date();
+        const formattedCurrentDate = new Date(currentDate.getTime()).toISOString().slice(0, 10) + ' 00:00:00';
+        console.log(formattedCurrentDate);
 
-        // Add 90 days
+        // For formattedDate90Days
         const futureDate90Days = new Date(currentDate.getTime() + (90 * 24 * 60 * 60 * 1000));
-        const formattedDate90Days = futureDate90Days.toISOString().slice(0, 10)
+        const formattedDate90Days = futureDate90Days.toISOString().slice(0, 10) + ' 00:00:00';
+        console.log(formattedDate90Days);
 
-        // Add 1 day
+        // For formattedDate1Day
         const futureDate1Day = new Date(currentDate);
         futureDate1Day.setDate(currentDate.getDate() + 1);
-        const formattedDate1Day = futureDate1Day.toISOString().slice(0, 10)
+        const formattedDate1Day = futureDate1Day.toISOString().slice(0, 10) + ' 00:00:00';
         console.log(formattedDate1Day);
+
+
+        axios.get('http://localhost:8000/users/', {
+            params: {
+                id: usernumber
+            }
+        })
+            .then((res) => {
+                const cash = res.data[0].positions.cash;
+                const s = isToggleOn ? 'BUY' : 'SELL';
+                if (s === 'SELL') {
+                    if ((numShares * askPrice) > (cash * 2) || (selectedTypeOption == 'STOPLIMIT' && activationPrice < askPrice)) {
+                        return;
+                    }
+        }
+            })
+            .catch((error) => {
+                console.error('Error fetching user id:', error);
+            });
+
+        //determine whether order is too big to process
+        
+
+        //GET request for user details
+        axios.get('http://localhost:8000/users/', {
+            params: {
+                id: usernumber
+            }
+        })
+            .then((res) => {
+                console.log(res.data[0].portfolio.cash);
+            })
+            .catch((error) => {
+                console.error('Error fetching user id:', error);
+            });
 
         // Make the POST request with URL params
         axios.post('http://localhost:8000/active-orders/', {
@@ -253,7 +291,7 @@ const Trade = () => {
             tif: selectedTifOption,
             type: selectedTypeOption,
             expiration_date: selectedTifOption === 'GTC' ? formattedDate90Days : formattedDate1Day,
-            order_date: new Date(currentDate.getTime()).toISOString().slice(0, 10),
+            order_date: formattedCurrentDate,
             num_shares: numShares,
             symbol: symbol,
             ask: askPrice,

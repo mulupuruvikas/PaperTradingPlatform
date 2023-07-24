@@ -1,53 +1,35 @@
-.layout {
+.back {
+    background: #000;
     position: absolute;
-    height: 100%;
     width: 100%;
-    background-color: #0f0f0f;
-    padding-top: 5%;
-    .login {
-        border-top: 200px;
-        text-align: left;
-        margin-left: 500px;
-        margin-right: 500px;
-        width: 25%;
-        background-size: 100%;
-        background-color: #1d1d1e;
-        height: 400px;
-        border-radius: 15px 15px;
-        img {
-            padding-top: 10%;
-            height: 75px;
-            text-align: center;
-            padding-left: 10%;
-        }
-        .inputs {
-            margin-left: 30px;
-            color: #fff;
-            input {
-                border-radius: 5px;
-                border: none;
-                text-align: left;
-                width: 260px;
-                height: 25px;
-                p {
-                    color: #fff;
-                }
-            }
-        }
-        button {
-            margin: 0%;
-            margin-left: 30px;
-            position: absolute;
-            margin-top: 65px;
-            width: 265px;
-            height: 30px;
-            background-color: #1F51FF;
-            border: none;
-            color: #fff;
-            border-radius: 5px;
-            &:hover {
-                background-color: #1b46de;
-            }
-        }
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Horizontally center the .signinlayout */
+}
+
+.signinlayout {
+    background: #1d1d1e;
+    width: 25%;
+    height: 70%;
+    display: flex;
+    flex-direction: column; /* To center the image and other content vertically */
+    align-items: center;
+    margin-top: 7.5%;
+}
+
+.signinlayout {
+    border-radius: 10px;
+    h1 {
+        color: #fff;
+        margin-top: 20%;
+        font-size: 25px;
+    }
+    .login-button {
+        margin-top: 10%;
+    }
+    img {
+        margin-top: 5%;
+        width: 40%;
+        height: auto;
     }
 }
