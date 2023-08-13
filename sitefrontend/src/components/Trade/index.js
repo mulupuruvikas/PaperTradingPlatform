@@ -258,7 +258,7 @@ const Trade = () => {
                 const cash = res.data[0].positions.cash;
                 const s = isToggleOn ? 'BUY' : 'SELL';
                 if (s === 'SELL') {
-                    if ((numShares * askPrice) > (cash * 2) || (selectedTypeOption == 'STOPLIMIT' && activationPrice < askPrice)) {
+                    if ((numShares * askPrice) > (cash * 2) || (selectedTypeOption === 'STOPLIMIT' && activationPrice < askPrice)) {
                         return;
                     }
         }

@@ -28,6 +28,9 @@ const Login = () => {
         }
     };
 
+    //
+    // DELETE all expired active orders
+    //
     useEffect(() => {
         // Delete request
         const today = new Date();
@@ -42,7 +45,6 @@ const Login = () => {
         const y = ninetyDaysAgo.getFullYear();
         const m = String(ninetyDaysAgo.getMonth() + 1).padStart(2, '0'); // Adding 1 to month because it is zero-indexed
         const d = String(ninetyDaysAgo.getDate()).padStart(2, '0');
-
 
         const endDate = `${y}-${m}-${d}`;
         axios.delete('http://localhost:8000/active-orders/delete/', {
@@ -157,6 +159,20 @@ const Login = () => {
                                                 .then((response) => {
                                                     // Handle success response here
                                                     console.log('Position updated:', response.data);
+                                                    if (position[0].num_shares - num_shares === 0) {
+                                                        console.log("REACHED ZERO");
+                                                        axios
+                                                            .delete(`http://localhost:8000/positions/${position[0].id}`)
+                                                            .then(response => {
+                                                                console.log('Deleted:', response.data);
+                                                                // Add any necessary logic after the successful deletion
+                                                            })
+                                                            .catch(error => {
+                                                                console.error('Error deleting:', error);
+                                                            });
+                                                    } else {
+                                                        console.log("HAS NOT REACHED ZERO");
+                                                    }
                                                 })
                                                 .catch((error) => {
                                                     // Handle error here
@@ -246,6 +262,20 @@ const Login = () => {
                                                         .then((response) => {
                                                             // Handle success response here
                                                             console.log('Position updated:', response.data);
+                                                            if (position[0].num_shares - num_shares === 0) {
+                                                                console.log("REACHED ZERO");
+                                                                axios
+                                                                    .delete(`http://localhost:8000/positions/${position[0].id}`)
+                                                                    .then(response => {
+                                                                        console.log('Deleted:', response.data);
+                                                                        // Add any necessary logic after the successful deletion
+                                                                    })
+                                                                    .catch(error => {
+                                                                        console.error('Error deleting:', error);
+                                                                    });
+                                                            } else {
+                                                                console.log("HAS NOT REACHED ZERO");
+                                                            }
                                                         })
                                                         .catch((error) => {
                                                             // Handle error here
@@ -346,6 +376,20 @@ const Login = () => {
                                                                     .then((response) => {
                                                                         // Handle success response here
                                                                         console.log('Position updated:', response.data);
+                                                                        if (position[0].num_shares - num_shares === 0) {
+                                                                            console.log("REACHED ZERO");
+                                                                            axios
+                                                                                .delete(`http://localhost:8000/positions/${position[0].id}`)
+                                                                                .then(response => {
+                                                                                    console.log('Deleted:', response.data);
+                                                                                    // Add any necessary logic after the successful deletion
+                                                                                })
+                                                                                .catch(error => {
+                                                                                    console.error('Error deleting:', error);
+                                                                                });
+                                                                        } else {
+                                                                            console.log("HAS NOT REACHED ZERO");
+                                                                        }
                                                                     })
                                                                     .catch((error) => {
                                                                         // Handle error here
@@ -438,14 +482,32 @@ const Login = () => {
                                         } else {
                                             const currvalue = Math.abs(position[0].num_shares) * position[0].bought_at;
                                             const additional = bought_at * num_shares;
+                                            console.log(position[0].num_shares);
+                                            console.log(num_shares);
                                             const new_bought = (additional + currvalue) / (Math.abs(position[0].num_shares) * num_shares);
                                             axios.patch(`http://localhost:8000/positions/${position[0].id}/`, {
                                                 bought_at: new_bought,
-                                                num_shares: position[0].num_shares + (num_shares)
+                                                num_shares: position[0].num_shares - (num_shares)
                                             })
                                                 .then((response) => {
                                                     // Handle success response here
+                                                    console.log(position[0].num_shares);
+                                                    console.log(num_shares);
                                                     console.log('Position updated:', response.data);
+                                                    if (position[0].num_shares - num_shares === 0) {
+                                                        console.log("REACHED ZERO");
+                                                        axios
+                                                            .delete(`http://localhost:8000/positions/${position[0].id}`)
+                                                            .then(response => {
+                                                                console.log('Deleted:', response.data);
+                                                                // Add any necessary logic after the successful deletion
+                                                            })
+                                                            .catch(error => {
+                                                                console.error('Error deleting:', error);
+                                                            });
+                                                    } else {
+                                                        console.log("HAS NOT REACHED ZERO");
+                                                    }
                                                 })
                                                 .catch((error) => {
                                                     // Handle error here
@@ -531,6 +593,20 @@ const Login = () => {
                                                         .then((response) => {
                                                             // Handle success response here
                                                             console.log('Position updated:', response.data);
+                                                            if (position[0].num_shares - num_shares === 0) {
+                                                                console.log("REACHED ZERO");
+                                                                axios
+                                                                    .delete(`http://localhost:8000/positions/${position[0].id}`)
+                                                                    .then(response => {
+                                                                        console.log('Deleted:', response.data);
+                                                                        // Add any necessary logic after the successful deletion
+                                                                    })
+                                                                    .catch(error => {
+                                                                        console.error('Error deleting:', error);
+                                                                    });
+                                                            } else {
+                                                                console.log("HAS NOT REACHED ZERO");
+                                                            }
                                                         })
                                                         .catch((error) => {
                                                             // Handle error here
@@ -631,6 +707,20 @@ const Login = () => {
                                                                     .then((response) => {
                                                                         // Handle success response here
                                                                         console.log('Position updated:', response.data);
+                                                                        if (position[0].num_shares - num_shares === 0) {
+                                                                            console.log("REACHED ZERO");
+                                                                            axios
+                                                                                .delete(`http://localhost:8000/positions/${position[0].id}`)
+                                                                                .then(response => {
+                                                                                    console.log('Deleted:', response.data);
+                                                                                    // Add any necessary logic after the successful deletion
+                                                                                })
+                                                                                .catch(error => {
+                                                                                    console.error('Error deleting:', error);
+                                                                                });
+                                                                        } else {
+                                                                            console.log("HAS NOT REACHED ZERO");
+                                                                        }
                                                                     })
                                                                     .catch((error) => {
                                                                         // Handle error here
