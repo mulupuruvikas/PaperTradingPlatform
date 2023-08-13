@@ -61,9 +61,7 @@ const Login = () => {
                 // Handle error here
                 console.error('Error deleting active orders:', error);
             });
-    }, []);
 
-    useEffect(() => {
         axios.get('http://localhost:8000/active-orders/')
             .then(response => {
                 const activeOrders = response.data;
@@ -421,6 +419,7 @@ const Login = () => {
                                 const symbol = order.symbol;
                                 const bought_at = stockData.c[stockData.c.length - 1];
                                 const num_shares = order.num_shares;
+                                console.log("NUM SHARES:", num_shares);
 
                                 axios
                                     .delete(`http://localhost:8000/active-orders/${order.id}`)
@@ -775,6 +774,19 @@ const Login = () => {
             .catch(error => {
                 console.error('Error fetching active orders:', error);
             });
+
+        /*global google */
+        google.accounts.id.initialize({
+            client_id: "758107152580-fo4ln9omnabm2k9sn4n3947h5frbhcvs.apps.googleusercontent.com",
+            callback: handleCallbackResponse
+        })
+
+
+
+        google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            { theme: "outline", size: "large"}
+        )
     }, []);
 
 
@@ -837,22 +849,6 @@ const Login = () => {
             });
 
     }
-
-    useEffect(() => {
-        /*global google */
-        google.accounts.id.initialize({
-            client_id: "758107152580-fo4ln9omnabm2k9sn4n3947h5frbhcvs.apps.googleusercontent.com",
-            callback: handleCallbackResponse
-        })
-
-
-
-        google.accounts.id.renderButton(
-            document.getElementById("signInDiv"),
-            { theme: "outline", size: "large"}
-        )
-
-    }, []);
 
     return (
         <div className="back">
