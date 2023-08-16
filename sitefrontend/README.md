@@ -19,7 +19,7 @@ Open another terminal, go to the 'sitefrontend' directory, and run <br />
 In one terminal, go to the 'sitebackend' directory and run: <br />
 &ensp;  -python manage.py runserver <br /> <br />
 Open another terminal, go to the 'sitefrontend' directory, and run <br />
-&ensp;  -npm start
+&ensp;  -npm start <br />
 
 ## Dev Info
 ### Frameworks
