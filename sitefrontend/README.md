@@ -20,3 +20,14 @@ In one terminal, go to the 'sitebackend' directory and run: <br />
 &ensp;  -python manage.py runserver <br /> <br />
 Open another terminal, go to the 'sitefrontend' directory, and run <br />
 &ensp;  -npm start
+
+## Dev Info
+### Frameworks
+Backend built using Django (Python) <br />
+Frontend built using React.js (JavaScript) <br />
+Databased managed using Django ORM/MySQL <br />
+
+## APIs
+Finnhub.io API used for retrieving end of day stock quotes (limit 120 API calls/min) <br />
+REST API created using Django REST Framework to perform CRUD operations from backend to frontend <br />
+
