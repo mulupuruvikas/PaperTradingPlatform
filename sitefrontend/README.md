@@ -9,7 +9,7 @@ This is an app built for novice investors to be able to practice long-term tradi
 ### If this is your first time running the program.
 In one terminal, go to the 'sitebackend' directory and run: <br />
 &ensp;  python manage.py makemigrations <br /> 
-&nbsp;  python manage.py migrate <br />
+  python manage.py migrate <br />
   python manage.py runserver
 Open another terminal, go to the 'sitefrontend' directory, and run <br />
   npm install <br />
